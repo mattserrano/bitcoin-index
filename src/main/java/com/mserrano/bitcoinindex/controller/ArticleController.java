@@ -20,11 +20,6 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @RequestMapping("/hello")
-    public String testMethod() {
-        return "Hello, world!";
-    }
-
     @RequestMapping("/{date}")
     public Collection<Article> getArticlesByDate(@PathVariable
                                                      @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
