@@ -16,9 +16,7 @@ public class Article {
     private String title;
     private String author;
     private String source;
-    @JsonProperty("source_url")
     private String sourceUrl;
-    @JsonProperty("publish_date")
     private String date;
 
     public String getId() {

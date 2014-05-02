@@ -1,6 +1,7 @@
 package com.mserrano.bitcoinindex.service.proxy.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mserrano.bitcoinindex.entity.Article;
 import com.mserrano.bitcoinindex.service.proxy.NewsProxy;
 import org.springframework.web.client.RestTemplate;
@@ -28,9 +29,9 @@ public class FeedzillaProxyImpl implements NewsProxy {
 
     @Override
     public Collection<Article> retrieveArticlesByDate(String date) {
-        Articles response = restTemplate.getForObject(getEndpointUri(), Articles.class, date);
+        FeedzillaArticlesDTO response = restTemplate.getForObject(getEndpointUri(), FeedzillaArticlesDTO.class, date);
         // filter out articles that do not match specified date - API limitation
-        List<Article> articles = response.getArticles()
+        List<Article> articles = response.articles
                 .stream()
                 .filter(p -> LocalDate.parse(p.getDate(), DateTimeFormatter.RFC_1123_DATE_TIME)
                         .isEqual(LocalDate.parse(date)))
@@ -53,10 +54,18 @@ public class FeedzillaProxyImpl implements NewsProxy {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Articles {
-    protected Collection<Article> articles;
+class FeedzillaArticlesDTO {
+    public Collection<FeedzillaArticle> articles;
+}
 
-    public Collection<Article> getArticles() {
-        return articles;
+class FeedzillaArticle extends Article {
+    @JsonProperty("source_url")
+    public String getSource() {
+        return super.getSource();
+    }
+
+    @JsonProperty("publish_date")
+    public String getDate() {
+        return super.getDate();
     }
 }
