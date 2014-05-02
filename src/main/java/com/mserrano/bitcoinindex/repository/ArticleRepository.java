@@ -3,7 +3,6 @@ package com.mserrano.bitcoinindex.repository;
 import com.mserrano.bitcoinindex.entity.Article;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.time.LocalDate;
 import java.util.Collection;
 
 /**
