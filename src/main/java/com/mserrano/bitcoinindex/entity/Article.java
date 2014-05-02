@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 /**
  * @author Matthew Serrano
  */
+@SuppressWarnings("UnusedDeclaration")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Article {
     @JsonIgnore
