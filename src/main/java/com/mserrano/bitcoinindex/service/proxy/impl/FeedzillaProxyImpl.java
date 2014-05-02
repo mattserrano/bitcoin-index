@@ -52,11 +52,11 @@ public class FeedzillaProxyImpl implements NewsProxy {
     }
 }
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    class Articles {
-        protected Collection<Article> articles;
+@JsonIgnoreProperties(ignoreUnknown = true)
+class Articles {
+    protected Collection<Article> articles;
 
-        public Collection<Article> getArticles() {
-            return articles;
-        }
+    public Collection<Article> getArticles() {
+        return articles;
     }
+}
