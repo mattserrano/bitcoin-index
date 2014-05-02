@@ -55,10 +55,10 @@ public class FeedzillaProxyImpl implements NewsProxy {
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class FeedzillaArticlesDTO {
-    public Collection<FeedzillaArticle> articles;
+    public Collection<FeedzillaArticleDTO> articles;
 }
 
-class FeedzillaArticle extends Article {
+class FeedzillaArticleDTO extends Article {
     @JsonProperty("source_url")
     public String getSource() {
         return super.getSource();
