@@ -17,16 +17,6 @@ public class ArticleService {
     @Autowired
     private NewsProxy newsProxy;
 
-    public void createArticle(String title, String author, String source, String sourceUrl, String publishDate) {
-        Article article = new Article();
-        article.setTitle(title);
-        article.setAuthor(author);
-        article.setSource(source);
-        article.setSourceUrl(sourceUrl);
-        article.setDate(publishDate);
-        repository.save(article);
-    }
-
     public Article getArticle(String id) {
         return repository.findOne(id);
     }
