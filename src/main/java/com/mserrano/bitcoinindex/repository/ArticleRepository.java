@@ -12,5 +12,5 @@ import java.util.Collection;
 public interface ArticleRepository extends MongoRepository<Article, String> {
     public Article findByTitle(String title);
     public Collection<Article> findByAuthor(String author);
-    public Collection<Article> findByDate(LocalDate date);
+    public Collection<Article> findByDate(String date);
 }

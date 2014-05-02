@@ -24,6 +24,6 @@ public class ArticleController {
     public Collection<Article> getArticlesByDate(@PathVariable
                                                      @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
                                                      String date) {
-        return articleService.getArticlesByDate(LocalDate.parse(date));
+        return articleService.getArticlesByDate(date);
     }
 }

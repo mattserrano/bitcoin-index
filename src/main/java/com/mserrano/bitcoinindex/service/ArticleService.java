@@ -31,7 +31,7 @@ public class ArticleService {
         return repository.findOne(id);
     }
 
-    public Collection<Article> getArticlesByDate(LocalDate date) {
+    public Collection<Article> getArticlesByDate(String date) {
         Collection<Article> articles = repository.findByDate(date);
         if (articles.isEmpty()) {
             articles = refreshArticles(date);
@@ -39,8 +39,8 @@ public class ArticleService {
         return articles;
     }
 
-    public Collection<Article> refreshArticles(LocalDate date) {
-        Collection<Article> articles = newsProxy.retrieveArticlesByDate(date.toString());
+    public Collection<Article> refreshArticles(String date) {
+        Collection<Article> articles = newsProxy.retrieveArticlesByDate(date);
         repository.save(articles);
         return articles;
     }

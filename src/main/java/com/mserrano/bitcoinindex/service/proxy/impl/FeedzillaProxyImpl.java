@@ -7,9 +7,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 /**
@@ -34,16 +34,29 @@ public class FeedzillaProxyImpl implements NewsProxy {
                 .stream()
                 .filter(p -> LocalDate.parse(p.getDate(), DateTimeFormatter.RFC_1123_DATE_TIME)
                         .isEqual(LocalDate.parse(date)))
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
+        // lazily normalize dates in articles to ISO_LOCAL_DATE
+        return normalizeDates(articles);
+    }
+
+    private Collection<Article> normalizeDates(List<Article> articles) {
+        ListIterator<Article> iterator = articles.listIterator();
+        while (iterator.hasNext()) {
+            Article a = iterator.next();
+            a.setDate(LocalDate.parse(a.getDate(), DateTimeFormatter.RFC_1123_DATE_TIME)
+                    .format(DateTimeFormatter.ISO_LOCAL_DATE));
+            iterator.set(a);
+        }
+
         return articles;
     }
 }
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-class Articles {
-    protected Collection<Article> articles;
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    class Articles {
+        protected Collection<Article> articles;
 
-    public Collection<Article> getArticles() {
-        return articles;
+        public Collection<Article> getArticles() {
+            return articles;
+        }
     }
-}
