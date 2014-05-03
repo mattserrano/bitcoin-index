@@ -3,7 +3,7 @@ package com.mserrano.bitcoinindex;
 import com.mserrano.bitcoinindex.repository.ArticleRepository;
 import com.mserrano.bitcoinindex.service.ArticleService;
 import com.mserrano.bitcoinindex.service.proxy.NewsProxy;
-import com.mserrano.bitcoinindex.service.proxy.impl.FeedzillaProxyImpl;
+import com.mserrano.bitcoinindex.service.proxy.impl.feedzilla.FeedzillaProxyImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

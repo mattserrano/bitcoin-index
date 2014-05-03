@@ -1,4 +1,4 @@
-package com.mserrano.bitcoinindex.service.proxy.impl;
+package com.mserrano.bitcoinindex.service.proxy.impl.feedzilla;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -53,19 +53,3 @@ public class FeedzillaProxyImpl implements NewsProxy {
     }
 }
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-class FeedzillaArticlesDTO {
-    public Collection<FeedzillaArticleDTO> articles;
-}
-
-class FeedzillaArticleDTO extends Article {
-    @JsonProperty("source_url")
-    public String getSource() {
-        return super.getSource();
-    }
-
-    @JsonProperty("publish_date")
-    public String getDate() {
-        return super.getDate();
-    }
-}
