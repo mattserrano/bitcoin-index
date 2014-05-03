@@ -5,7 +5,6 @@ import com.mserrano.bitcoinindex.repository.ArticleRepository;
 import com.mserrano.bitcoinindex.service.proxy.NewsProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDate;
 import java.util.Collection;
 
 /**
