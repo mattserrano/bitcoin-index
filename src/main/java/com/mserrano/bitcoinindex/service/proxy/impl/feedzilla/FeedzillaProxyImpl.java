@@ -1,7 +1,5 @@
 package com.mserrano.bitcoinindex.service.proxy.impl.feedzilla;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mserrano.bitcoinindex.entity.Article;
 import com.mserrano.bitcoinindex.service.proxy.NewsProxy;
 import org.springframework.web.client.RestTemplate;
