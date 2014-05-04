@@ -1,7 +1,6 @@
 package com.mserrano.bitcoinindex.service.proxy;
 
 import com.mserrano.bitcoinindex.entity.Article;
-import org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator;
 
 import java.util.Collection;
 

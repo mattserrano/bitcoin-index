@@ -1,6 +1,5 @@
 package com.mserrano.bitcoinindex;
 
-import com.mserrano.bitcoinindex.entity.BitcoinDailyHistory;
 import com.mserrano.bitcoinindex.repository.ArticleRepository;
 import com.mserrano.bitcoinindex.repository.BitcoinRepository;
 import com.mserrano.bitcoinindex.service.ArticleService;
