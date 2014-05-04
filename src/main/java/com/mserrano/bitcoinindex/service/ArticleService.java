@@ -4,12 +4,14 @@ import com.mserrano.bitcoinindex.entity.Article;
 import com.mserrano.bitcoinindex.repository.ArticleRepository;
 import com.mserrano.bitcoinindex.service.proxy.NewsProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * @author Matthew Serrano
  */
+@Service
 public class ArticleService {
     @Autowired
     private ArticleRepository repository;
