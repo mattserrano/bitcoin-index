@@ -25,6 +25,7 @@ public class ArticleService {
         if (articles.isEmpty()) {
             articles = refreshArticles(date);
         }
+
         return articles;
     }
 
