@@ -6,6 +6,8 @@ import com.mserrano.bitcoinindex.service.proxy.BitcoinHistoryProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
  * @author Matthew Serrano
  */
@@ -26,8 +28,10 @@ public class BitcoinHistoryService {
     }
 
     private BitcoinDailyHistory refreshBitcoinHistory(String date) {
-        BitcoinDailyHistory btcDailyHistory = historyProxy.getDailyHistoryByDate(date);
-        bitcoinRepository.save(btcDailyHistory);
-        return btcDailyHistory;
+        Map<String, BitcoinDailyHistory> btcDailyHistoryMap = historyProxy.retrieveDailyHistory();
+        for (Map.Entry<String, BitcoinDailyHistory> entry : btcDailyHistoryMap.entrySet()) {
+            bitcoinRepository.save(entry.getValue());
+        }
+        return btcDailyHistoryMap.get(date);
     }
 }
