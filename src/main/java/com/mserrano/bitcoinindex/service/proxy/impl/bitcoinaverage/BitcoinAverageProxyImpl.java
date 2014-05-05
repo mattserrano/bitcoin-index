@@ -31,7 +31,7 @@ public class BitcoinAverageProxyImpl implements BitcoinHistoryProxy {
     private static final String ENDPOINT = "https://api.bitcoinaverage.com/history/";
     private static final String ENDPOINT_SUFFIX = "/per_day_all_time_history.csv";
     private static final String CSV_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    private static final Log LOG = LogFactory.getLog(BitcoinAverageProxyImpl.class);
+    private static Log log = LogFactory.getLog(BitcoinAverageProxyImpl.class);
 
     public BitcoinAverageProxyImpl() {
     }
@@ -59,7 +59,7 @@ public class BitcoinAverageProxyImpl implements BitcoinHistoryProxy {
         try {
             this.dailyHistoryMap = retrieveCsv();
         } catch (IOException|ParseException ex) {
-            LOG.error("Could not retrieve CSV from " + getEndpointUri(), ex);
+            log.error("Could not retrieve CSV from " + getEndpointUri(), ex);
         }
 
         if (this.dailyHistoryMap == null) {
@@ -77,7 +77,6 @@ public class BitcoinAverageProxyImpl implements BitcoinHistoryProxy {
                 CsvPreference.STANDARD_PREFERENCE);
         final String[] header = beanReader.getHeader(true);
         BitcoinHistoryBean btcHistoryBean;
-        //Map<String, BitcoinDailyHistory> dailyHistoryMap = new LinkedHashMap<>();
         while ((btcHistoryBean = beanReader.read(BitcoinHistoryBean.class,
                 header,
                 getProcessors())
